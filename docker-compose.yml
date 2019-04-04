@@ -1,0 +1,22 @@
+version: '3'
+services:
+  grafana:
+    container_name: grafana
+    privileged: true
+    image: grafana/grafana:6.1.0
+    volumes:
+      - ${PWD}/grafana/provisioning:/etc/grafana/provisioning/
+      - ${PWD}/grafana/storage:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=secret
+  influx:
+    container_name: influxdb
+    privileged: true
+    image: influxdb:1.7.5
+    volumes:
+      - ${PWD}/influxdb/provisioning:/docker-entrypoint-initdb.d
+      - ${PWD}/influxdb/storage:/var/lib/influxdb
+    ports:
+      - "8086:8086"
