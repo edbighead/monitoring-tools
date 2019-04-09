@@ -15,8 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
-  "iteration": 1554447439448,
+  "iteration": 1554800632152,
   "links": [],
   "panels": [
     {
@@ -42,10 +41,10 @@
     },
     {
       "cacheTimeout": null,
-      "content": "\n<h2><a href=http://localhost:9000/dashboard?id=${project}>${project}</a></h2>\n\n\n\n\n",
+      "content": "\n<h3><a href=http://localhost:9000/dashboard?id=${project}>${project}</a></h3>\n\n\n\n\n",
       "gridPos": {
         "h": 5,
-        "w": 5,
+        "w": 4,
         "x": 0,
         "y": 1
       },
@@ -133,7 +132,7 @@
       "gridPos": {
         "h": 5,
         "w": 2,
-        "x": 5,
+        "x": 4,
         "y": 1
       },
       "id": 9,
@@ -261,6 +260,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
+      "description": "",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -271,8 +271,8 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 3,
-        "x": 7,
+        "w": 2,
+        "x": 6,
         "y": 1
       },
       "id": 20,
@@ -368,7 +368,7 @@
       "timeShift": null,
       "title": "Bugs",
       "type": "singlestat",
-      "valueFontSize": "200%",
+      "valueFontSize": "150%",
       "valueMaps": [
         {
           "op": "=",
@@ -399,8 +399,8 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 3,
-        "x": 10,
+        "w": 2,
+        "x": 8,
         "y": 1
       },
       "id": 21,
@@ -496,7 +496,7 @@
       "timeShift": null,
       "title": "Vulnerabilities",
       "type": "singlestat",
-      "valueFontSize": "200%",
+      "valueFontSize": "150%",
       "valueMaps": [
         {
           "op": "=",
@@ -527,8 +527,8 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 3,
-        "x": 13,
+        "w": 2,
+        "x": 10,
         "y": 1
       },
       "id": 28,
@@ -624,7 +624,7 @@
       "timeShift": null,
       "title": "Code Smells",
       "type": "singlestat",
-      "valueFontSize": "200%",
+      "valueFontSize": "150%",
       "valueMaps": [
         {
           "op": "=",
@@ -654,8 +654,8 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 5,
-        "x": 16,
+        "w": 4,
+        "x": 12,
         "y": 1
       },
       "id": 14,
@@ -766,6 +766,261 @@
     {
       "cacheTimeout": null,
       "colorBackground": false,
+      "colorPostfix": true,
+      "colorPrefix": false,
+      "colorValue": true,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "decimals": 0,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 3,
+        "x": 16,
+        "y": 1
+      },
+      "id": 30,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "h",
+      "postfixFontSize": "150%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "bugs",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(\"val\") FROM \"jenkins_since\" WHERE (\"project_key\" =~ /^$project$/)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "val"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "project_key",
+              "operator": "=~",
+              "value": "/^$project$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": "24,24",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Since build",
+      "type": "singlestat",
+      "valueFontSize": "150%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": false,
+      "colorValue": true,
+      "colors": [
+        "#d44a3a",
+        "rgba(237, 129, 40, 0.89)",
+        "rgba(0, 255, 68, 0.32)"
+      ],
+      "decimals": 1,
+      "format": "none",
+      "gauge": {
+        "maxValue": 1,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 3,
+        "x": 19,
+        "y": 1
+      },
+      "id": 31,
+      "interval": null,
+      "links": [],
+      "mappingType": 2,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "0.1",
+          "text": "UNSTABLE",
+          "to": "0.5"
+        },
+        {
+          "from": "0",
+          "text": "FAILED",
+          "to": "0.1"
+        },
+        {
+          "from": "0.5",
+          "text": "SUCCESS",
+          "to": "1.0"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "last",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "alert_status",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT last(\"val\") FROM \"jenkins_status\" WHERE (\"project_key\" =~ /^$project$/)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "val"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "project_key",
+              "operator": "=~",
+              "value": "/^$project$/"
+            },
+            {
+              "condition": "AND",
+              "key": "component_type",
+              "operator": "=~",
+              "value": "/^$project$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": "0.5,1",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Build status",
+      "type": "singlestat",
+      "valueFontSize": "70%",
+      "valueMaps": [],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
       "colorPostfix": false,
       "colorPrefix": false,
       "colorValue": false,
@@ -784,8 +1039,8 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 3,
-        "x": 21,
+        "w": 2,
+        "x": 22,
         "y": 1
       },
       "id": 29,
@@ -881,7 +1136,7 @@
       "timeShift": null,
       "title": "Lines of code",
       "type": "singlestat",
-      "valueFontSize": "200%",
+      "valueFontSize": "110%",
       "valueMaps": [
         {
           "op": "=",
@@ -892,6 +1147,7 @@
       "valueName": "avg"
     }
   ],
+  "refresh": false,
   "schemaVersion": 18,
   "style": "dark",
   "tags": [],
@@ -900,16 +1156,6 @@
       {
         "allValue": null,
         "current": {
-          "tags": [
-            {
-              "selected": true,
-              "text": "main",
-              "values": [
-                "org.codehaus.sonar:signature-service"
-              ],
-              "valuesText": "org.codehaus.sonar:signature-service"
-            }
-          ],
           "text": "org.codehaus.sonar:signature-service",
           "value": [
             "org.codehaus.sonar:signature-service"
@@ -930,8 +1176,8 @@
         "sort": 0,
         "tagValuesQuery": "select distinct(\"project_key\") from (select \"val\", \"project_key\" from coverage where component_type=~/^$tag$/)",
         "tags": [
-          "dependency",
-          "main"
+          "deployable",
+          "utils"
         ],
         "tagsQuery": "show tag values from coverage with key in (\"component_type\")",
         "type": "query",
@@ -940,8 +1186,8 @@
     ]
   },
   "time": {
-    "from": "now-5m",
-    "to": "now"
+    "from": "2019-04-09T11:59:08.311Z",
+    "to": "2019-04-09T12:09:08.311Z"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -971,5 +1217,5 @@
   "timezone": "",
   "title": "Sonar",
   "uid": "WJoqxPeik",
-  "version": 2
+  "version": 1
 }
